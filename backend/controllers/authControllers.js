@@ -989,7 +989,7 @@ function options(type, currentUrl, uniqueString, Email, _id) {
 }
 
 const sendVerificationEmail = async ({ _id, Email }, type, res) => {
-  const currentUrl = "http://localhost:3000";
+  const currentUrl = "https://treasured-backend.onrender.com";
   const uniqueString = uuidv4() + _id;
   
   
