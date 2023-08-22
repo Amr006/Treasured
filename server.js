@@ -91,9 +91,10 @@ app.get('/', (req, res, next) => {
     clues: [
       "🌴 Follow the path of 'api/' to start the journey.",
       "🦜 Look out for the 'X marks the spot' at each endpoint!",
-      "⚓ More treasures await as you navigate the API seas!"
+      "⚓ More treasures await as you navigate the API seas!",
     ],
-    disclaimer: "Remember, only true adventurers can unlock the secrets..."
+    disclaimer: "Remember, only true adventurers can unlock the secrets...",
+    documentation: "/api-docs"
   };
 
   res.status(200).json(treasureMap);
