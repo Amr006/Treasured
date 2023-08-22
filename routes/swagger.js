@@ -4,37 +4,150 @@
  *   schemas:
  *     User:
  *       type: object
- *       required:
- *         - Email
- *         - Password
- *         - Name
  *       properties:
  *         Email:
  *           type: string
  *           format: email
  *           description: The email address of the user.
+ *           example: user@example.com
  *         Password:
  *           type: string
  *           description: The password of the user.
+ *           example: mysecurepassword
  *         Name:
  *           type: string
  *           description: The name of the user.
+ *           example: John Doe
+ *         ProfilePicture:
+ *           type: string
+ *           description: The URL of the user's profile picture.
+ *           example: http://example.com/profile.jpg
+ *         Location:
+ *           type: object
+ *           properties:
+ *             city:
+ *               type: string
+ *               description: The city where the user is located.
+ *               example: New York
+ *             country:
+ *               type: string
+ *               description: The country where the user is located.
+ *               example: United States
  *         Verified:
  *           type: boolean
- *           default: false
- *           description: Indicates whether the user is verified.
+ *           description: Indicates whether the user's email is verified.
+ *           example: true
  *         Role:
  *           type: string
- *           default: User
  *           description: The role of the user.
+ *           example: User
+ *         Tutorial:
+ *           type: boolean
+ *           description: Indicates whether the user has completed a tutorial.
+ *           example: true
+ *         Library:
+ *           type: object
+ *           properties:
+ *             Music:
+ *               type: array
+ *               description: The user's music library.
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   name:
+ *                     type: string
+ *                     description: The name of the music item.
+ *                   artist:
+ *                     type: string
+ *                     description: The artist of the music item.
+ *                   image:
+ *                     type: string
+ *                     description: The URL of the music item's image.
+ *             Books:
+ *               type: array
+ *               description: The user's book library.
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   name:
+ *                     type: string
+ *                     description: The name of the book item.
+ *                   writer:
+ *                     type: string
+ *                     description: The writer of the book item.
+ *                   image:
+ *                     type: string
+ *                     description: The URL of the book item's image.
+ *             Games:
+ *               type: array
+ *               description: The user's game library.
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   name:
+ *                     type: string
+ *                     description: The name of the game item.
+ *                   company:
+ *                     type: string
+ *                     description: The company of the game item.
+ *                   image:
+ *                     type: string
+ *                     description: The URL of the game item's image.
+ *             Movies:
+ *               type: array
+ *               description: The user's movie library.
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   name:
+ *                     type: string
+ *                     description: The name of the movie item.
+ *                   preview:
+ *                     type: string
+ *                     description: The URL of the movie item's preview.
+ *                   image:
+ *                     type: string
+ *                     description: The URL of the movie item's image.
+ *         Followers:
+ *           type: array
+ *           description: List of users who are following this user.
+ *           items:
+ *             type: string
+ *           example: []
+ *       required:
+ *         - Email
+ *         - Password
+ *         - Name
  *       example:
  *         Email: user@example.com
  *         Password: mysecurepassword
  *         Name: John Doe
- *         verified: false
- *         role: User
+ *         ProfilePicture: http://example.com/profile.jpg
+ *         Location:
+ *           city: New York
+ *           country: United States
+ *         Verified: true
+ *         Role: User
+ *         Tutorial: true
+ *         Library:
+ *           Music:
+ *             - name: Song Name
+ *               artist: Artist Name
+ *               image: http://example.com/song.jpg
+ *           Books:
+ *             - name: Book Title
+ *               writer: Author Name
+ *               image: http://example.com/book.jpg
+ *           Games:
+ *             - name: Game Title
+ *               company: Game Company
+ *               image: http://example.com/game.jpg
+ *           Movies:
+ *             - name: Movie Title
+ *               preview: http://example.com/movie_preview.mp4
+ *               image: http://example.com/movie.jpg
+ *         Followers: []
  */
-
 
 /**
  * @swagger
@@ -67,6 +180,98 @@
  *         uniqueString: abcdef123456
  *         createdAt: "2023-08-22T12:00:00Z"
  *         expireAt: "2023-08-30T12:00:00Z"
+ */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Post:
+ *       type: object
+ *       properties:
+ *         content:
+ *           type: string
+ *           description: The content of the post.
+ *           example: This is a great post!
+ *         user:
+ *           type: string
+ *           description: The ID of the user who created the post.
+ *           example: 6155f7cfcf971234567890ab
+ *         image:
+ *           type: string
+ *           description: The URL of the post image.
+ *           example: http://example.com/post_image.jpg
+ *         comments:
+ *           type: array
+ *           description: List of comments on the post.
+ *           items:
+ *             type: string
+ *             example: 6155f7cfcf971234567890cd
+ *         likes:
+ *           type: array
+ *           description: List of reactions (likes, loves, etc.) on the post.
+ *           items:
+ *             type: object
+ *             properties:
+ *               user:
+ *                 type: string
+ *                 description: The ID of the user who reacted.
+ *                 example: 6155f7cfcf971234567890ef
+ *               reactionType:
+ *                 type: string
+ *                 description: The type of reaction.
+ *                 enum: ['like', 'love', 'wow', 'haha', 'sad', 'angry']
+ *                 example: like
+ *         createdAt:
+ *           type: string
+ *           format: date-time
+ *           description: The date and time when the post was created.
+ *           example: 2023-08-22T12:34:56Z
+ *       required:
+ *         - content
+ *         - user
+ *       example:
+ *         content: This is a great post!
+ *         user: 6155f7cfcf971234567890ab
+ *         image: http://example.com/post_image.jpg
+ *         comments: []
+ *         likes: []
+ *         createdAt: 2023-08-22T12:34:56Z
+ */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Comment:
+ *       type: object
+ *       properties:
+ *         content:
+ *           type: string
+ *           description: The content of the comment.
+ *           example: This is a great comment!
+ *         user:
+ *           type: string
+ *           description: The ID of the user who created the comment.
+ *           example: 6155f7cfcf971234567890ab
+ *         post:
+ *           type: string
+ *           description: The ID of the post to which the comment belongs.
+ *           example: 6155f7cfcf971234567890cd
+ *         createdAt:
+ *           type: string
+ *           format: date-time
+ *           description: The date and time when the comment was created.
+ *           example: 2023-08-22T12:34:56Z
+ *       required:
+ *         - content
+ *         - user
+ *         - post
+ *       example:
+ *         content: This is a great comment!
+ *         user: 6155f7cfcf971234567890ab
+ *         post: 6155f7cfcf971234567890cd
+ *         createdAt: 2023-08-22T12:34:56Z
  */
 
 
