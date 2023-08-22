@@ -59,7 +59,7 @@ const options = {
     //apis: ["./routes/*.js"]
 
   },
-  apis: ['./routes/*.js'], // files containing annotations as above
+  apis: ['./backend/routes/*.js'], // files containing annotations as above
 };
 
 const openapiSpecification = swaggerJsDoc(options);
