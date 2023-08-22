@@ -1,0 +1,21 @@
+{
+  "name": "treasured",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd backend && npm install",
+    "start": "nodemon backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Amr006/Treasured.git"
+  },
+  "author": "Amr006 Liebe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Amr006/Treasured/issues"
+  },
+  "homepage": "https://github.com/Amr006/Treasured#readme"
+}
