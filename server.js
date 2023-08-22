@@ -53,7 +53,7 @@ const options = {
     },
     servers: [
       {
-        url: "http://localhost:3000"
+        url: "https://treasured-backend.onrender.com/api"
       }
     ],
     //apis: ["./routes/*.js"]

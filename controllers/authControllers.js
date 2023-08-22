@@ -1191,6 +1191,7 @@ const verify = (req, res, next) => {
 };
 
 const login = (req, res, next) => {
+  
   User.findOne({ Email: req.body.email_log })
     .then((user) => {
       if (user) {
