@@ -84,6 +84,20 @@ app.use(session({
 }));
 app.use("/api-docs" , swaggerUI.serve , swaggerUI.setup(openapiSpecification));
 
+app.get('/', (req, res, next) => {
+  // Imagine you're serving a secret treasure map to your users!
+  const treasureMap = {
+    message: "🗺️ Welcome to the Treasure Hunt API! 🏴‍☠️",
+    clues: [
+      "🌴 Follow the path of 'api/' to start the journey.",
+      "🦜 Look out for the 'X marks the spot' at each endpoint!",
+      "⚓ More treasures await as you navigate the API seas!"
+    ],
+    disclaimer: "Remember, only true adventurers can unlock the secrets..."
+  };
+
+  res.status(200).json(treasureMap);
+});
 app.use('/api' , authRoutes)
 
 
